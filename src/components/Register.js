@@ -24,7 +24,7 @@ function Register(props) {
                         </h5>
                         <h1 className="text-xs-center">Sign Up</h1>
                         <p className="text-xs-center">
-                            <Link to="/login">
+                            <Link to="/">
                                 Have an account?
                             </Link>
                         </p>

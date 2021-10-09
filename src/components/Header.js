@@ -14,17 +14,11 @@ const Header = (props) => {
           Social
         </Link>
         <div className="ml-auto d-flex">
-          {!auth.isLoggedIn ? (
-            <React.Fragment>
-              <Link to="/login" className="btn btn-white ml-auto">
-                Login/Register
-              </Link>
-            </React.Fragment>
-          ) : (
+          {(auth.isLoggedIn) && (
             <React.Fragment>
               <span className="text-white navbar-brand ">Hello, {auth.user.fullName}</span>
-              <Link to="/ask_question" className="btn btn-head  ml-auto">
-                Ask Question
+              <Link to="/home" className="btn btn-head  ml-auto">
+                Tweet
               </Link>
               <button
                 className="btn btn-white btn-sm mx-2"
