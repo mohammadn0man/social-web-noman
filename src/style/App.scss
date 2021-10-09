@@ -1,0 +1,37 @@
+.actions {
+    opacity: 0;
+  }
+  
+  tr:hover .actions {
+    opacity: 1;
+  }
+  
+  span { cursor: pointer; }
+
+  tbody td a {
+    color: #222;
+  
+    &:hover {
+      color: #222;
+    }
+  }
+
+  .go-right{
+    float: right;
+  }
+
+  .go-left{
+    float: left;
+  }
+
+  .logo {
+    height: 50px;
+    width: 50px;
+  }
+
+  .footer{
+    position:absolute;
+    left:0;
+    bottom:0;
+    right:0;
+  }
