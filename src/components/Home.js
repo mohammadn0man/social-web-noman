@@ -1,6 +1,4 @@
-import React, { useEffect, useState } from 'react'
-import { connect } from 'react-redux';
-import Dropdown from 'react-dropdown';
+import React from 'react'
 import Footer from './Footer';
 import ReactPaginate from 'react-paginate';
 import '../style/pagination.scss';

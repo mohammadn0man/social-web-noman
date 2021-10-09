@@ -4,6 +4,7 @@ import { Route, Switch } from 'react-router';
 import { BrowserRouter as Router, useHistory } from 'react-router-dom'
 import Home from './components/Home';
 import Login from './components/Login';
+import ConnectWithUser from './components/ConnectWithUser';
 import Register from './components/Register';
 import axios from 'axios';
 import { useDispatch } from "react-redux";
@@ -37,6 +38,7 @@ function App() {
             <Switch>
               <Route exact path="/home" component={Home} />
               <Route exact path="/" component={Login} />
+              <Route exact path="/connect" component={ConnectWithUser} />
               <Route exact path="/register" component={Register} />
             </Switch>
           </div>

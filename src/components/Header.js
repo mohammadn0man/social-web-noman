@@ -10,15 +10,18 @@ const Header = (props) => {
   return (
     <nav className="navbar shadow fixed-top navbar-expand-sm navbar-dark bg-primary">
       <div className="container">
-        <Link to="/" className="text-white navbar-brand">
+        <Link to={auth.isLoggedIn?"/home":"/"} className="text-white navbar-brand">
           Social
         </Link>
         <div className="ml-auto d-flex">
           {(auth.isLoggedIn) && (
             <React.Fragment>
               <span className="text-white navbar-brand ">Hello, {auth.user.fullName}</span>
-              <Link to="/home" className="btn btn-head  ml-auto">
+              <Link to="/home" className="btn  btn-head  ml-auto">
                 Tweet
+              </Link>
+              <Link to="/connect" className="btn btn-head mx-2 ml-auto">
+                Connect
               </Link>
               <button
                 className="btn btn-white btn-sm mx-2"
