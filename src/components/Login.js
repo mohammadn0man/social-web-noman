@@ -5,17 +5,19 @@ import { Link } from 'react-router-dom';
 import { LoginAuthAction } from '../actions/AuthAction';
 
 const Login = (props) => {
+    const history = useHistory();
+    if(localStorage.getItem("auth") !== null){
+        history.push("/home");  
+    }
+    
     const { login } = props;
-
 
     const [errorHandler, setErrorHandler] = useState({
         hasError: false,
         message: "",
     });
 
-
     const [loginState, setLoginState] = useState({});
-    const history = useHistory();
 
     return (
         <div className="auth-page">

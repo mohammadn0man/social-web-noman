@@ -1,61 +1,73 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import Footer from './Footer';
+import { useHistory } from "react-router";
 import ReactPaginate from 'react-paginate';
+import { GetPosts } from '../actions/PostAction';
+import { connect, useDispatch } from 'react-redux';
+import Post from './Post';
 import '../style/pagination.scss';
 
 const Home = (props) => {
-    // const { loadAllQuestions, questionState } = props;
+    const history = useHistory();
+    if(localStorage.getItem("auth") === null){
+        history.push("/");  
+    }
+    const dispatch = useDispatch();
+    const { getPosts, state } = props;
 
-    // useEffect(() => {
-    //     pagination(pageState.offset, pageState.currentPage)
-    // }, [questionState]);
+    useEffect( () => {
+        getPosts(state.authState.user.userName);
+    }, []);
 
-    // const [pageState, setPageState] = useState({
-    //     offset: 0,
-    //     data: [],
-    //     perPage: 5,
-    //     currentPage: 0,
-    // });
+    useEffect(() => {
+        pagination(pageState.offset, pageState.currentPage)
+    }, [state.allPosts.posts]);
 
-    // function pagination(offset, selectedPage) {
-        // const slice = questionState.questions.slice(offset, offset + pageState.perPage)
-        // const postData = slice.map((question) => (
-            // <Question question={question} key={question.questionId} />
-        // ));
-        // setPageState({
-        //     ...pageState,
-        //     pageCount: Math.ceil(questionState.questions.length / pageState.perPage),
-        //     ...{ postData },
-        //     currentPage: selectedPage,
-        //     ...{ offset }
-        // })
-    // }
+    const [pageState, setPageState] = useState({
+        offset: 0,
+        data: [],
+        perPage: 5,
+        currentPage: 0,
+    });
 
-    // const handlePageClick = (e) => {
-    //     const selectedPage = e.selected;
-    //     const offset = selectedPage * pageState.perPage;
-    //     pagination(offset, selectedPage);
-    // };
+    function pagination(offset, selectedPage) {
+        const slice = state.allPosts.posts.slice(offset, offset + pageState.perPage)
+        const postData = slice.map((post) => (
+            <Post post={post} key={post.postId} />
+        ));
+        setPageState({
+            ...pageState,
+            pageCount: Math.ceil(state.allPosts.posts.length / pageState.perPage),
+            ...{ postData },
+            currentPage: selectedPage,
+            ...{ offset }
+        })
+    }
+
+    const handlePageClick = (e) => {
+        const selectedPage = e.selected;
+        const offset = selectedPage * pageState.perPage;
+        pagination(offset, selectedPage);
+    };
 
 
 
     return (
         <div>
-            {/* {questionState.isAllLoaded || questionState.questions.length > 0 ? ( */}
-            { (false) ? 
-                (< React.Fragment >
+            {state.allPosts.isAllLoaded || state.allPosts.posts.length > 0 ? (
+                < React.Fragment >
                     <table className="table shadow">
                         <tbody>
-                            {/* {pageState.postData} */}
+                            {pageState.postData}
                             <ReactPaginate
                                 previousLabel={"prev"}
                                 nextLabel={"next"}
                                 breakLabel={"..."}
                                 breakClassName={"break-me"}
-                                // pageCount={pageState.pageCount}
+                                pageCount={pageState.pageCount}
                                 marginPagesDisplayed={2}
                                 pageRangeDisplayed={5}
-                                // onPageChange={handlePageClick}
+                                onPageChange={handlePageClick}
                                 containerClassName={"pagination"}
                                 subContainerClassName={"pages pagination"}
                                 activeClassName={"active"} />
@@ -72,19 +84,18 @@ const Home = (props) => {
     )
 }
 
-// const mapStateToProps = (pageState) => {
-//     return {
-//         questionState: pageState.questionState,
-//     };
-// };
+const mapStateToProps = (state) => {
+    return {
+        state,
+    };
+};
 
-// const mapDispatchToProps = (dispatch) => {
-//     return {
-//         loadAllQuestions: (val, sort) => {
-//             dispatch(LoadAllQuestions(val, sort));
-//         },
-//     };
-// };
+const mapDispatchToProps = (dispatch) => {
+    return {
+        getPosts: (userName) => {
+            dispatch(GetPosts(userName));
+        },
+    };
+};
 
-// export default connect(mapStateToProps, mapDispatchToProps)(Home);
-export default Home;
+export default connect(mapStateToProps, mapDispatchToProps)(Home);
