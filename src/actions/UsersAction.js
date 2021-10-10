@@ -16,7 +16,21 @@ const GetAllUsers = () => {
     }
 }
 
+const FollowUser = (data, history) => {
+    return async (dispatch) => {
+        try {
+            const res = await axios.post("follower/add", data);
+            console.log("follow user response : ", res.data);
+            dispatch({ type: UsersActionType.FOLLOW_USER, payload: data});
+            history.push("/home");
+        } catch (err) {
+            console.log("user follow error;  " , err);
+        }
+    }
+}
+
 export {
     UsersActionType,
-    GetAllUsers
+    GetAllUsers,
+    FollowUser
 }

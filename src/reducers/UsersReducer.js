@@ -13,6 +13,8 @@ const userReducer = (state = allUserState, action) => {
                 isAllLoaded: true,
                 users : action.payload,
             }
+        case UsersActionType.FOLLOW_USER:
+            return state;
         default :
             return state;
     }
