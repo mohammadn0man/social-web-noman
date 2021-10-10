@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { FaUsers } from 'react-icons/fa';
+import { TiUser } from 'react-icons/ti';
 import { connect } from 'react-redux';
 import { useHistory } from "react-router-dom";
 import { FollowUser } from '../actions/UsersAction';
@@ -33,7 +33,7 @@ export const User = (props) => {
     return (
         <div class="user_card d-flex justify-content-between align-items-center p-l-3 p-r-3 w-75">
             <div class="user_container">
-                <FaUsers size={180} />
+                <TiUser size={180} />
             </div>
             <div class="user_container">
                 <h4><b>{user.fullName} </b></h4>

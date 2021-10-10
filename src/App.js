@@ -9,6 +9,7 @@ import Register from './components/Register';
 import axios from 'axios';
 import { useDispatch } from "react-redux";
 import { AuthActionType } from "./actions/AuthAction";
+import Tweet from "./components/Tweet";
 
 function App() {
   const history = useHistory();
@@ -38,6 +39,7 @@ function App() {
             <Switch>
               <Route exact path="/home" component={Home} />
               <Route exact path="/" component={Login} />
+              <Route exact path="/post" component={Tweet} />
               <Route exact path="/connect" component={ConnectWithUser} />
               <Route exact path="/register" component={Register} />
             </Switch>

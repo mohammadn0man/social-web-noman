@@ -16,8 +16,22 @@ const GetPosts = (userName) => {
     }
 }
 
+const AddPost = (post, history) => {
+    return async (dispatch) => {
+        try {
+            const res = await axios.post("/post/add", post);
+            console.log("follow user response : ", res.data);
+            dispatch({ type: PostActionType.ADD_POST, payload: res });
+            history.push("/home");
+        } catch (error) {
+            console.log("add post errror : ". error);
+        }
+    }
+}
+
 
 export {
     PostActionType,
-    GetPosts
+    GetPosts,
+    AddPost,
 }

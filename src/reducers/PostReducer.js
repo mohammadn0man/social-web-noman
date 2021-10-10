@@ -13,6 +13,9 @@ const postReducer = (state = allPosts, action) => {
                 isAllLoaded: true,
                 posts: action.payload,
             }
+
+        case PostActionType.ADD_POST : 
+            return state;
         default : 
             return state;
     }

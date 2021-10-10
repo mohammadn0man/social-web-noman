@@ -17,7 +17,7 @@ const Header = (props) => {
           {(auth.isLoggedIn) && (
             <React.Fragment>
               <span className="text-white navbar-brand ">Hello, {auth.user.fullName}</span>
-              <Link to="/home" className="btn  btn-head  ml-auto">
+              <Link to="/post" className="btn  btn-head  ml-auto">
                 Tweet
               </Link>
               <Link to="/connect" className="btn btn-head mx-2 ml-auto">
