@@ -6,16 +6,6 @@ import User from './User';
 export const ConnectWithUser = (props) => {
     const dispatch = useDispatch();
     const {getUsers} = props;
-    // function getUserData() {
-    //     if(!props.state.allUserState.isAllLoaded){
-    //         dispatch(GetAllUsers())
-    //     }
-    //     let arr = props.state.allUserState.users;
-    //     console.log("user op",arr);
-    //     return arr;
-    // }
-
-    // const users = getUserData();
 
     useEffect(
         () => {

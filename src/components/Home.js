@@ -54,7 +54,7 @@ const Home = (props) => {
 
     return (
         <div>
-            {state.allPosts.isAllLoaded || state.allPosts.posts.length > 0 ? (
+            {(state.allPosts.isAllLoaded && (state.allPosts.posts.length > 0)) ? (
                 < React.Fragment >
                     <table className="table shadow">
                         <tbody>
@@ -76,7 +76,7 @@ const Home = (props) => {
                 </React.Fragment>
             ) : (
                 <React.Fragment>
-                    <h4>Nothing to show here...</h4>
+                    <h4>Nothing to show here, None of user you follow has posted anything.</h4>
                 </React.Fragment>
             )}
             <Footer />

@@ -10,7 +10,7 @@ const Post = ({ post }) => {
                         {"Posted on : " + post.timestamp.substring(0, 10)}
                     </p>
                     <p className="card-title font-weight-bold go-left">
-                        {"userName : "}
+                        {"userName : @alpha"}
                     </p>
                     <p className="card-text go-right">
                         {post.postContent}
